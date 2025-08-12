@@ -107,7 +107,7 @@ class PromptHub {
             plusBtn.addEventListener('click', this.showOptionsPopup.bind(this));
         }
 
-        // Input field enter key
+        // Input field enter key and auto-resize
         const promptInput = document.getElementById('promptInput');
         if (promptInput) {
             promptInput.addEventListener('keydown', (e) => {
@@ -115,6 +115,12 @@ class PromptHub {
                     e.preventDefault();
                     this.processPrompt();
                 }
+            });
+            
+            // Auto-resize textarea
+            promptInput.addEventListener('input', () => {
+                promptInput.style.height = 'auto';
+                promptInput.style.height = Math.min(promptInput.scrollHeight, 200) + 'px';
             });
         }
 

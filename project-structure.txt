@@ -1,0 +1,28 @@
+├── api/
+│   └── index.js (10.1 KB)
+├── assets/
+├── css/
+│   └── style.css (28.2 KB)
+├── images/
+├── js/
+│   └── script.js (28.4 KB)
+├── API_STRUCTURE_FIX.md (2.3 KB)
+├── DEBUG_CSS_ISSUE.md (2.7 KB)
+├── DEPLOY.md (1.1 KB)
+├── deploy.sh (3.1 KB)
+├── DEPLOYMENT_CHECKLIST.md (2.3 KB)
+├── Dockerfile (0.7 KB)
+├── env.example (0.4 KB)
+├── index.html (16.1 KB)
+├── package-lock.json (45.2 KB)
+├── package.json (0.8 KB)
+├── QUICK_FIX.md (2.1 KB)
+├── README.md (10.0 KB)
+├── REDEPLOY_CHECKLIST.md (2.7 KB)
+├── RENDER_DEPLOYMENT.md (4.1 KB)
+├── RENDER_READY_SUMMARY.md (4.1 KB)
+├── render.yaml (0.4 KB)
+├── server.js (12.0 KB)
+├── test.html (0.6 KB)
+├── VERCEL_DEPLOYMENT.md (4.1 KB)
+└── vercel.json (0.0 KB)
