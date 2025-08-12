@@ -2,11 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const path = require('path');
+const helmet = require('helmet');
+const compression = require('compression');
+require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
-// Load API key from environment (Vercel will provide this)
+// Load API key from environment (Render will provide this)
 const API_KEY = process.env.GEMINI_API_KEY;
 
 // Initialize Gemini AI only if API key is available
@@ -17,18 +20,56 @@ if (API_KEY) {
     console.warn("⚠️ GEMINI_API_KEY not found - AI features will be disabled");
 }
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+// Production middleware
+if (process.env.NODE_ENV === 'production') {
+    // Security headers
+    app.use(helmet({
+        contentSecurityPolicy: {
+            directives: {
+                defaultSrc: ["'self'"],
+                styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdnjs.cloudflare.com"],
+                fontSrc: ["'self'", "https://fonts.gstatic.com"],
+                scriptSrc: ["'self'", "'unsafe-inline'"],
+                imgSrc: ["'self'", "data:", "https:"],
+                connectSrc: ["'self'"]
+            }
+        }
+    }));
+    
+    // Compression for better performance
+    app.use(compression());
+    
+    // Trust proxy for Render
+    app.set('trust proxy', 1);
+}
 
-// Serve static files - simplified approach
-app.use(express.static(__dirname));
+// CORS configuration
+const corsOptions = {
+    origin: process.env.CORS_ORIGIN ? 
+        process.env.CORS_ORIGIN.split(',') : 
+        ['http://localhost:3000', 'http://localhost:10000'],
+    credentials: true,
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
-// Debug middleware to log requests
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
-    next();
-});
+// Body parsing middleware
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Serve static files - optimized for production
+app.use(express.static(__dirname, {
+    maxAge: process.env.NODE_ENV === 'production' ? '1d' : 0,
+    etag: true
+}));
+
+// Debug middleware to log requests (only in development)
+if (process.env.NODE_ENV !== 'production') {
+    app.use((req, res, next) => {
+        console.log(`${req.method} ${req.url}`);
+        next();
+    });
+}
 
 // Root route
 app.get('/', (req, res) => {
@@ -284,6 +325,6 @@ if (process.env.NODE_ENV !== 'production') {
     });
 }
 
-// Export for Vercel serverless functions
+// Export for Render deployment
 module.exports = app;
 
