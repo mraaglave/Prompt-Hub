@@ -84,12 +84,7 @@ Prompt Enhancer is a lightweight, interactive platform designed to help users cr
 
 ### Installation & Setup
 
-#### Method 1: Quick Start (Recommended)
-1. **Double-click** `start.bat` to automatically install and start the server
-2. **Open your browser** to `http://localhost:3000`
-3. **Start enhancing prompts!**
-
-#### Method 2: Manual Setup
+#### Method 1: Local Development
 1. **Install dependencies:**
    ```bash
    npm install
@@ -99,6 +94,12 @@ Prompt Enhancer is a lightweight, interactive platform designed to help users cr
    npm start
    ```
 3. **Open your browser** to `http://localhost:3000`
+4. **Start enhancing prompts!**
+
+#### Method 2: Vercel Deployment (Recommended)
+1. **Follow the deployment guide** in `VERCEL_DEPLOYMENT.md`
+2. **Deploy to Vercel** for production use
+3. **Access your app** at your Vercel domain
 
 ### File Structure
 ```
