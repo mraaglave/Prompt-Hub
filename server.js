@@ -21,18 +21,14 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 app.use(cors());
 app.use(express.json());
 
-// Serve static files with proper MIME types
-app.use(express.static(__dirname, {
-    setHeaders: (res, path) => {
-        if (path.endsWith('.css')) {
-            res.setHeader('Content-Type', 'text/css');
-        } else if (path.endsWith('.js')) {
-            res.setHeader('Content-Type', 'application/javascript');
-        } else if (path.endsWith('.html')) {
-            res.setHeader('Content-Type', 'text/html');
-        }
-    }
-}));
+// Serve static files - simplified approach
+app.use(express.static(__dirname));
+
+// Debug middleware to log requests
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
 
 // Root route
 app.get('/', (req, res) => {
@@ -42,6 +38,24 @@ app.get('/', (req, res) => {
 // Health check
 app.get('/health', (req, res) => {
     res.json({ status: 'OK', message: 'Prompt Enhancer API is running' });
+});
+
+// Test route for CSS file
+app.get('/css/style.css', (req, res) => {
+    console.log('CSS file requested');
+    res.sendFile(path.join(__dirname, 'css', 'style.css'));
+});
+
+// Test route for JS file
+app.get('/js/script.js', (req, res) => {
+    console.log('JS file requested');
+    res.sendFile(path.join(__dirname, 'js', 'script.js'));
+});
+
+// Test route for test HTML
+app.get('/test', (req, res) => {
+    console.log('Test HTML requested');
+    res.sendFile(path.join(__dirname, 'test.html'));
 });
 
 // Enhance prompt endpoint

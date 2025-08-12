@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Test</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1 style="color: red;">This should be red if CSS is NOT loading</h1>
+    <h1 class="hero-title">This should be styled if CSS IS loading</h1>
+    
+    <button onclick="testJS()">Test JavaScript</button>
+    
+    <script src="js/script.js"></script>
+    <script>
+        function testJS() {
+            alert('JavaScript is working!');
+        }
+    </script>
+</body>
+</html>
