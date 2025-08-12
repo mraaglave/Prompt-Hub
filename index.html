@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Hub - AI Prompt Enhancement Tool</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Craft better AI prompts with our advanced scenario, tone, and length options in an easy-to-use interface.">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-magic"></i>
+                <span>Prompt Hub</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <div class="social-links">
+                    <a href="https://github.com" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section home-section active">
+            <div class="container">
+                <!-- Hero Section -->
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <span class="gradient-text">Enhance Your AI Prompts</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Craft better AI prompts with advanced scenario, tone, and length options. 
+                            Get more relevant, faster, and audience-focused responses.
+                        </p>
+                        <button class="cta-button" onclick="showPromptInterface()">
+                            <i class="fas fa-rocket"></i>
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Info Cards -->
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Smart Enhancement</h3>
+                        <p>AI-powered prompt optimization for better results</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Multiple Tones</h3>
+                        <p>Choose from friendly, expert, creative, and more</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Scenario-Based</h3>
+                        <p>Optimized for storytelling, coding, marketing, and more</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Responsive Design</h3>
+                        <p>Works perfectly on all devices</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prompt Interface Section -->
+        <section id="prompt-interface" class="section prompt-section">
+            <div class="container">
+                <div class="prompt-container">
+                    <!-- Header with Counter -->
+                    <div class="prompt-header">
+                        <h2>AI Prompt Enhancer</h2>
+                        <div class="prompt-counter">
+                            <i class="fas fa-counter"></i>
+                            <span>Prompts: <span id="promptCount">0</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Trending Presets -->
+                    <div class="trending-section">
+                        <h3><i class="fas fa-fire"></i> Trending Prompts</h3>
+                        <div class="preset-buttons">
+                            <button class="preset-btn" data-preset="storytelling">Story Writing</button>
+                            <button class="preset-btn" data-preset="marketing">Marketing Copy</button>
+                            <button class="preset-btn" data-preset="code">Code Help</button>
+                            <button class="preset-btn" data-preset="business">Business Plan</button>
+                        </div>
+                    </div>
+
+                    <!-- Chat Interface -->
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="welcome-message">
+                                <div class="bot-avatar">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="message-content">
+                                    <p>Welcome to Prompt Hub! Enter your prompt below and I'll help you enhance it for better AI responses.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Input Area -->
+                        <div class="input-container">
+                            <div class="input-wrapper">
+                                <textarea id="promptInput" placeholder="Enter your prompt here..." rows="3"></textarea>
+                                <button class="plus-btn" id="plusBtn">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button class="send-btn" id="sendBtn">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- History Panel -->
+                    <div class="history-panel" id="historyPanel">
+                        <div class="history-header">
+                            <h3><i class="fas fa-history"></i> Session History</h3>
+                            <button class="toggle-history" id="toggleHistory">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                        </div>
+                        <div class="history-content" id="historyContent">
+                            <p class="no-history">No prompts in this session yet.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about-section">
+            <div class="container">
+                <h2>About Prompt Hub</h2>
+                <div class="about-content">
+                    <p>Prompt Hub is a lightweight, interactive platform designed to help users craft better AI prompts. Our tool offers advanced scenario, tone, and length options in an easy-to-use chat interface.</p>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Multiple Scenarios & Tones</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Session-based History</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Responsive Design</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Glassmorphism UI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="contact-content">
+                    <p>Have questions or suggestions? We'd love to hear from you!</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@prompthub.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <span>github.com/prompthub</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <span>linkedin.com/company/prompthub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Plus Options Popup -->
+    <div class="popup-overlay" id="plusPopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Enhance Your Prompt</h3>
+                <button class="close-popup" id="closePopup">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="popup-body">
+                <!-- Scenario Selection -->
+                <div class="option-group">
+                    <h4><i class="fas fa-theater-masks"></i> Scenario</h4>
+                    <div class="option-buttons">
+                        <button class="option-btn" data-option="scenario" data-value="storytelling">Story Writing</button>
+                        <button class="option-btn" data-option="scenario" data-value="coding">Code Help</button>
+                        <button class="option-btn" data-option="scenario" data-value="marketing">Marketing</button>
+                        <button class="option-btn" data-option="scenario" data-value="business">Business</button>
+                        <button class="option-btn" data-option="scenario" data-value="educational">Educational</button>
+                        <button class="option-btn" data-option="scenario" data-value="creative">Creative</button>
+                    </div>
+                </div>
+
+                <!-- Tone Selection -->
+                <div class="option-group">
+                    <h4><i class="fas fa-volume-up"></i> Tone</h4>
+                    <div class="option-buttons">
+                        <button class="option-btn" data-option="tone" data-value="friendly">Friendly</button>
+                        <button class="option-btn" data-option="tone" data-value="expert">Expert</button>
+                        <button class="option-btn" data-option="tone" data-value="humorous">Humorous</button>
+                        <button class="option-btn" data-option="tone" data-value="creative">Creative</button>
+                        <button class="option-btn" data-option="tone" data-value="empathetic">Empathetic</button>
+                        <button class="option-btn" data-option="tone" data-value="analytical">Analytical</button>
+                    </div>
+                </div>
+
+                <!-- Length Selection -->
+                <div class="option-group">
+                    <h4><i class="fas fa-ruler"></i> Output Length</h4>
+                    <div class="option-buttons">
+                        <button class="option-btn" data-option="length" data-value="short">Short</button>
+                        <button class="option-btn" data-option="length" data-value="medium">Medium</button>
+                        <button class="option-btn" data-option="length" data-value="long">Long</button>
+                    </div>
+                </div>
+
+                <!-- Quick Toggles -->
+                <div class="option-group">
+                    <h4><i class="fas fa-toggle-on"></i> Quick Options</h4>
+                    <div class="toggle-options">
+                        <label class="toggle-label">
+                            <input type="checkbox" data-toggle="sources">
+                            <span class="toggle-slider"></span>
+                            Add Sources
+                        </label>
+                        <label class="toggle-label">
+                            <input type="checkbox" data-toggle="stepbystep">
+                            <span class="toggle-slider"></span>
+                            Step-by-Step
+                        </label>
+                        <label class="toggle-label">
+                            <input type="checkbox" data-toggle="seo">
+                            <span class="toggle-slider"></span>
+                            SEO Friendly
+                        </label>
+                        <label class="toggle-label">
+                            <input type="checkbox" data-toggle="examples">
+                            <span class="toggle-slider"></span>
+                            Include Examples
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-footer">
+                <button class="apply-btn" id="applyOptions">Apply Options</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donation Popup -->
+    <div class="popup-overlay" id="donationPopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Support Prompt Hub</h3>
+            </div>
+            <div class="popup-body">
+                <div class="donation-content">
+                    <i class="fas fa-heart donation-icon"></i>
+                    <p>You've reached your free limit of 5 prompts per session!</p>
+                    <p>Support us to help keep this tool free and improve it further.</p>
+                    <div class="donation-buttons">
+                        <a href="https://www.buymeacoffee.com/prompthub" target="_blank" class="donation-btn coffee" id="mainDonationBtn">
+                            <i class="fas fa-coffee"></i>
+                            Support Prompt Hub
+                        </a>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">
+                        <span style="cursor: pointer; text-decoration: underline;" id="continueTrial">
+                            Or continue with trial version
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

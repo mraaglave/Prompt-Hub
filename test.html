@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test - Prompt Enhancer</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 50px auto; 
+            padding: 20px; 
+            background: #1a1a1a; 
+            color: white;
+        }
+        textarea, button { 
+            width: 100%; 
+            padding: 10px; 
+            margin: 10px 0; 
+            border-radius: 5px;
+        }
+        textarea {
+            background: #2a2a2a;
+            color: white;
+            border: 1px solid #444;
+            height: 100px;
+        }
+        button {
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .result {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #4ade80;
+        }
+        .error {
+            border-left-color: #f87171;
+        }
+        .loading {
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Prompt Enhancer API Test</h1>
+    <p>This page tests the Node.js backend with Gemini AI integration.</p>
+    
+    <h3>Test Prompt Enhancement:</h3>
+    <textarea id="testPrompt" placeholder="Enter a test prompt here...">write a story about a robot</textarea>
+    <button onclick="testEnhancement()">✨ Test Enhancement</button>
+    
+    <div id="result"></div>
+
+    <script>
+        async function testEnhancement() {
+            const prompt = document.getElementById('testPrompt').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (!prompt) {
+                resultDiv.innerHTML = '<div class="result error">Please enter a prompt to test.</div>';
+                return;
+            }
+            
+            resultDiv.innerHTML = '<div class="result loading">🔄 Testing AI enhancement...</div>';
+            
+            try {
+                const response = await fetch('/api/enhance-prompt', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        prompt: prompt,
+                        options: {
+                            scenario: 'storytelling',
+                            tone: 'creative',
+                            length: 'medium'
+                        }
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <div class="result">
+                            <h4>✅ Enhancement Successful!</h4>
+                            <p><strong>Original:</strong> ${data.originalPrompt}</p>
+                            <p><strong>Enhanced:</strong> ${data.enhancedPrompt}</p>
+                            <p><small>Timestamp: ${new Date(data.timestamp).toLocaleString()}</small></p>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<div class="result error">❌ Error: ${data.error}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result error">❌ Connection Error: ${error.message}</div>`;
+            }
+        }
+        
+        // Test on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/health')
+                .then(res => res.json())
+                .then(data => {
+                    document.body.insertAdjacentHTML('afterbegin', 
+                        `<div class="result">✅ Server Status: ${data.status} - ${data.message}</div>`
+                    );
+                })
+                .catch(() => {
+                    document.body.insertAdjacentHTML('afterbegin', 
+                        `<div class="result error">❌ Server not running. Please start the Node.js server first.</div>`
+                    );
+                });
+        });
+    </script>
+</body>
+</html>

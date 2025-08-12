@@ -1,0 +1,69 @@
+# Node.js dependencies (if you add them later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables (IMPORTANT: Contains API keys)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# API Keys (if accidentally committed)
+config/keys.js
+config/dev.js
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# Lock files (uncomment if you prefer not to commit them)
+# package-lock.json
+# yarn.lock
+
+# Build outputs
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/
+
+# Local development
+.local
