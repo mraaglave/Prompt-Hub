@@ -190,12 +190,22 @@ class PromptHub {
             }
         });
 
-        // Close popup on overlay click
+        // Close popup on overlay click with improved handling
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('popup-overlay')) {
                 this.closePopup(e.target);
             }
         });
+        
+        // Add specific handler for the close button
+        const closePopupBtn = document.getElementById('closePopup');
+        if (closePopupBtn) {
+            closePopupBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.closePopup(document.getElementById('plusPopup'));
+            });
+        }
     }
 
     // Navigation
@@ -471,8 +481,12 @@ class PromptHub {
 
     closePopup(popup) {
         if (popup) {
+            // Force removal of active class to ensure popup closes
             popup.classList.remove('active');
-            document.body.style.overflow = '';
+            // Add a small delay before enabling scroll to ensure popup is fully closed
+            setTimeout(() => {
+                document.body.style.overflow = '';
+            }, 50);
         }
     }
 

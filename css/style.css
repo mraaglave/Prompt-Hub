@@ -7,8 +7,8 @@
 
 :root {
     --bg-primary: #000000;
-    --bg-secondary: #0a0a0a;
-    --bg-tertiary: #1a1a1a;
+    --bg-secondary: #000000;
+    --bg-tertiary: #000000;
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-bg-hover: rgba(255, 255, 255, 0.08);
     --glass-border: rgba(255, 255, 255, 0.08);
@@ -487,6 +487,7 @@ body {
 /* Input Container */
 .input-container {
     position: relative;
+    width: 100%;
 }
 
 .input-wrapper {
@@ -497,6 +498,8 @@ body {
     border: 1px solid var(--glass-border);
     border-radius: var(--border-radius);
     padding: 1rem;
+    width: 100%;
+    max-width: 100%;
 }
 
 #promptInput {
@@ -509,6 +512,8 @@ body {
     font-size: 1rem;
     resize: vertical;
     min-height: 60px;
+    width: 100%;
+    max-width: 100%;
 }
 
 #promptInput::placeholder {
@@ -643,11 +648,12 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 2000;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .popup-overlay.active {
     display: flex;
+    touch-action: none; /* Prevents scrolling on touch devices when popup is open */
 }
 
 .popup-content {
@@ -660,6 +666,7 @@ body {
     max-height: 80vh;
     overflow-y: auto;
     box-shadow: var(--shadow-glow);
+    position: relative;
 }
 
 .popup-header {
@@ -683,6 +690,8 @@ body {
     padding: 0.5rem;
     border-radius: 4px;
     transition: var(--transition);
+    z-index: 2100;
+    position: relative;
 }
 
 .close-popup:hover {
@@ -1205,13 +1214,19 @@ body {
     }
 
     .input-wrapper {
-        flex-direction: column;
-        gap: 1rem;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+    }
+
+    #promptInput {
+        min-height: 50px;
+        font-size: 0.95rem;
     }
 
     .plus-btn,
     .send-btn {
-        align-self: flex-end;
+        align-self: center;
     }
 
     .popup-overlay {
@@ -1279,6 +1294,22 @@ body {
 
     .prompt-container {
         padding: 1rem;
+    }
+
+    .input-wrapper {
+        padding: 0.75rem;
+    }
+
+    #promptInput {
+        min-height: 40px;
+        font-size: 0.9rem;
+    }
+
+    .plus-btn,
+    .send-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
     }
 
     .popup-overlay {
