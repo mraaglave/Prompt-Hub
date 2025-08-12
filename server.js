@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 require('dotenv').config();
+const path = require('path'); // Added for path.join
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,11 +20,23 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('./'));
+
+// Serve static files with proper MIME types
+app.use(express.static(__dirname, {
+    setHeaders: (res, path) => {
+        if (path.endsWith('.css')) {
+            res.setHeader('Content-Type', 'text/css');
+        } else if (path.endsWith('.js')) {
+            res.setHeader('Content-Type', 'application/javascript');
+        } else if (path.endsWith('.html')) {
+            res.setHeader('Content-Type', 'text/html');
+        }
+    }
+}));
 
 // Root route
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Health check
@@ -204,6 +217,11 @@ function applyFallbackEnhancement(originalPrompt) {
 app.use((error, req, res, next) => {
     console.error('Server Error:', error);
     res.status(500).json({ error: 'Internal server error' });
+});
+
+// Catch-all route for SPA - serve index.html for any unmatched routes (must be last)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Start server
