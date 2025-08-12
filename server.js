@@ -1,21 +1,26 @@
 const express = require('express');
 const cors = require('cors');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
-require('dotenv').config();
-const path = require('path'); // Added for path.join
+const path = require('path');
+
+// Only load dotenv in development
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Load API key from .env
+// Load API key from environment (Vercel will provide this)
 const API_KEY = process.env.GEMINI_API_KEY;
-if (!API_KEY) {
-    console.error("❌ Missing GEMINI_API_KEY in .env file");
-    process.exit(1);
-}
 
-// Initialize Gemini AI
-const genAI = new GoogleGenerativeAI(API_KEY);
+// Initialize Gemini AI only if API key is available
+let genAI = null;
+if (API_KEY) {
+    genAI = new GoogleGenerativeAI(API_KEY);
+} else {
+    console.warn("⚠️ GEMINI_API_KEY not found - AI features will be disabled");
+}
 
 // Middleware
 app.use(cors());
@@ -37,7 +42,25 @@ app.get('/', (req, res) => {
 
 // Health check
 app.get('/health', (req, res) => {
-    res.json({ status: 'OK', message: 'Prompt Enhancer API is running' });
+    res.json({ 
+        status: 'OK', 
+        message: 'Prompt Enhancer API is running',
+        timestamp: new Date().toISOString(),
+        aiAvailable: !!genAI,
+        environment: process.env.NODE_ENV || 'development'
+    });
+});
+
+// Status endpoint for debugging
+app.get('/status', (req, res) => {
+    res.json({
+        status: 'running',
+        timestamp: new Date().toISOString(),
+        environment: process.env.NODE_ENV || 'development',
+        hasApiKey: !!process.env.GEMINI_API_KEY,
+        aiInitialized: !!genAI,
+        version: '1.0.0'
+    });
 });
 
 // Test route for CSS file
@@ -61,6 +84,14 @@ app.get('/test', (req, res) => {
 // Enhance prompt endpoint
 app.post('/api/enhance-prompt', async (req, res) => {
     try {
+        // Check if AI is available
+        if (!genAI) {
+            return res.status(503).json({ 
+                error: 'AI service temporarily unavailable', 
+                message: 'Please check your GEMINI_API_KEY environment variable' 
+            });
+        }
+
         const { prompt, options = {} } = req.body;
 
         if (!prompt || prompt.trim() === '') {
@@ -86,7 +117,20 @@ app.post('/api/enhance-prompt', async (req, res) => {
 
     } catch (error) {
         console.error('Error enhancing prompt:', error);
-        res.status(500).json({ error: 'Failed to enhance prompt', message: error.message });
+        
+        // Provide user-friendly error messages
+        let errorMessage = 'Failed to enhance prompt';
+        if (error.message.includes('API_KEY')) {
+            errorMessage = 'AI service configuration error';
+        } else if (error.message.includes('network')) {
+            errorMessage = 'Network error - please try again';
+        }
+        
+        res.status(500).json({ 
+            error: errorMessage, 
+            message: error.message,
+            timestamp: new Date().toISOString()
+        });
     }
 });
 
