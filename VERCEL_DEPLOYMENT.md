@@ -14,7 +14,7 @@ Before deploying, you need to set up your environment variables in Vercel:
 
 ### Required Environment Variables
 
-1. **GEMINI_API_KEY**: Your Google Gemini AI API key
+1. **AIzaSyANqUsTPw-2WVedMHDe2CpNjd29Kha1xyw**: Your Google Gemini AI API key
    - Get it from [Google AI Studio](https://makersuite.google.com/app/apikey)
 
 ### How to Set Environment Variables in Vercel
