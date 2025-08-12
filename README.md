@@ -77,6 +77,38 @@ Prompt Enhancer is a lightweight, interactive platform designed to help users cr
 
 ## 🚀 Getting Started
 
+## 🚀 Deployment Options
+
+### Render.com (Recommended)
+- **Free tier available** with automatic scaling
+- **Easy deployment** with Blueprint support
+- **Custom domains** supported
+- **Docker containerization** for consistency
+- **Health checks** and monitoring included
+
+**Quick Deploy:**
+1. Fork this repository
+2. Go to [Render.com](https://render.com)
+3. Use the Blueprint option
+4. Connect your repository
+5. Set `GEMINI_API_KEY` environment variable
+6. Deploy!
+
+**See `RENDER_DEPLOYMENT.md` for detailed instructions.**
+
+### Vercel
+- **Serverless deployment** with edge functions
+- **Automatic CI/CD** from GitHub
+- **Global CDN** for fast performance
+- **Free tier** available
+
+**See `VERCEL_DEPLOYMENT.md` for detailed instructions.**
+
+### Local Development
+- **Full control** over environment
+- **Easy debugging** and development
+- **No deployment** required for testing
+
 ### Prerequisites
 - **Node.js** (v18 or higher) - [Download here](https://nodejs.org/)
 - Modern web browser with ES6+ support
@@ -96,7 +128,15 @@ Prompt Enhancer is a lightweight, interactive platform designed to help users cr
 3. **Open your browser** to `http://localhost:3000`
 4. **Start enhancing prompts!**
 
-#### Method 2: Vercel Deployment (Recommended)
+#### Method 2: Render.com Deployment (Recommended)
+1. **Follow the deployment guide** in `RENDER_DEPLOYMENT.md`
+2. **Use the deployment script:**
+   ```bash
+   chmod +x deploy.sh
+   ./deploy.sh
+   ```
+
+#### Method 3: Vercel Deployment
 1. **Follow the deployment guide** in `VERCEL_DEPLOYMENT.md`
 2. **Deploy to Vercel** for production use
 3. **Access your app** at your Vercel domain
