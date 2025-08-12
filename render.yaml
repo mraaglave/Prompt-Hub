@@ -11,4 +11,3 @@ services:
       - key: PORT
         value: 3000
       - key: GEMINI_API_KEY
-        value: AIzaSyANqUsTPw-2WVedMHDe2CpNjd29Kha1xyw
