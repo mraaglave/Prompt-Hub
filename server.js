@@ -3,11 +3,6 @@ const cors = require('cors');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const path = require('path');
 
-// Only load dotenv in development
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
-}
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
