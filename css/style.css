@@ -91,10 +91,13 @@ body {
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0px) rotate(0deg);
         opacity: 0.5;
     }
+
     50% {
         transform: translateY(-20px) rotate(180deg);
         opacity: 0.8;
@@ -210,13 +213,14 @@ body {
 }
 
 @keyframes fadeIn {
-    from { 
-        opacity: 0; 
-        transform: translateY(10px); 
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -653,7 +657,8 @@ body {
 
 .popup-overlay.active {
     display: flex;
-    touch-action: none; /* Prevents scrolling on touch devices when popup is open */
+    touch-action: none;
+    /* Prevents scrolling on touch devices when popup is open */
 }
 
 .popup-content {
@@ -803,12 +808,12 @@ body {
     transition: var(--transition);
 }
 
-.toggle-label input[type="checkbox"]:checked + .toggle-slider {
+.toggle-label input[type="checkbox"]:checked+.toggle-slider {
     background: var(--gradient-primary);
     border-color: transparent;
 }
 
-.toggle-label input[type="checkbox"]:checked + .toggle-slider::before {
+.toggle-label input[type="checkbox"]:checked+.toggle-slider::before {
     transform: translateX(20px);
 }
 
@@ -842,9 +847,12 @@ body {
 }
 
 @keyframes heartbeat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.1);
     }
@@ -995,7 +1003,6 @@ body {
 
 /* How It Works Section */
 .how-to-section {
-    background-color: var(--bg-secondary);
     padding: 6rem 0;
 }
 
@@ -1008,10 +1015,10 @@ body {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    background: var(--gradient-accent);
+    background: var (--gradient-primary);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--gradient-primary);
 }
 
 .section-subtitle {
@@ -1031,7 +1038,7 @@ body {
     content: '';
     position: absolute;
     width: 4px;
-    background: var(--gradient-accent);
+    background: var(--gradient-primary);
     top: 0;
     bottom: 0;
     left: 50%;
@@ -1089,16 +1096,28 @@ body {
     animation: slideInUp 0.6s ease-out forwards;
 }
 
-.timeline-item:nth-child(1) .timeline-content { animation-delay: 0.1s; }
-.timeline-item:nth-child(2) .timeline-content { animation-delay: 0.2s; }
-.timeline-item:nth-child(3) .timeline-content { animation-delay: 0.3s; }
-.timeline-item:nth-child(4) .timeline-content { animation-delay: 0.4s; }
+.timeline-item:nth-child(1) .timeline-content {
+    animation-delay: 0.1s;
+}
+
+.timeline-item:nth-child(2) .timeline-content {
+    animation-delay: 0.2s;
+}
+
+.timeline-item:nth-child(3) .timeline-content {
+    animation-delay: 0.3s;
+}
+
+.timeline-item:nth-child(4) .timeline-content {
+    animation-delay: 0.4s;
+}
 
 @keyframes slideInUp {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1121,17 +1140,20 @@ body {
     .how-to-timeline::after {
         left: 25px;
     }
+
     .timeline-item {
         width: 100%;
         padding-left: 60px;
         padding-right: 1rem;
     }
+
     .timeline-item:nth-child(odd),
     .timeline-item:nth-child(even) {
         left: 0;
         text-align: left;
         padding-left: 60px;
     }
+
     .timeline-icon,
     .timeline-item:nth-child(even) .timeline-icon {
         left: 0;
@@ -1160,7 +1182,7 @@ body {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
     .nav-toggle {
@@ -1173,7 +1195,7 @@ body {
         border-radius: var(--border-radius-small);
         transition: var(--transition);
     }
-    
+
     .nav-toggle:hover {
         background: rgba(255, 255, 255, 0.1);
     }
@@ -1194,7 +1216,7 @@ body {
     .container {
         padding: 0 1.5rem;
     }
-    
+
     .nav-container {
         padding: 0 1.5rem;
     }
@@ -1287,7 +1309,7 @@ body {
     .container {
         padding: 0 1rem;
     }
-    
+
     .nav-container {
         padding: 0 1rem;
     }
@@ -1315,7 +1337,7 @@ body {
     .popup-overlay {
         padding: 0;
     }
-    
+
     .popup-content {
         width: 100%;
         height: 100%;
@@ -1324,7 +1346,7 @@ body {
         display: flex;
         flex-direction: column;
     }
-    
+
     .popup-body {
         flex-grow: 1;
         overflow-y: auto;
@@ -1358,9 +1380,12 @@ body {
 
 /* Loading Animation */
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.5;
     }
@@ -1389,7 +1414,11 @@ body {
 }
 
 /* Touch Targets and Button Enhancements */
-button, .cta-button, .preset-btn, .option-btn, .nav-link {
+button,
+.cta-button,
+.preset-btn,
+.option-btn,
+.nav-link {
     min-height: 44px;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -1397,11 +1426,15 @@ button, .cta-button, .preset-btn, .option-btn, .nav-link {
     transition: var(--transition);
 }
 
-button:hover, .cta-button:hover, .preset-btn:hover, .option-btn:hover {
+button:hover,
+.cta-button:hover,
+.preset-btn:hover,
+.option-btn:hover {
     transform: translateY(-2px);
 }
 
-.plus-btn, .send-btn {
+.plus-btn,
+.send-btn {
     width: 48px;
     height: 48px;
 }
@@ -1416,6 +1449,7 @@ textarea:focus {
 
 /* Print Styles */
 @media print {
+
     .navbar,
     .popup-overlay,
     .floating-shape,
@@ -1570,22 +1604,27 @@ textarea:focus {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        transparent
-    );
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
     animation: shimmer 1.5s infinite;
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
+
     40% {
         transform: translateY(-5px);
     }
+
     60% {
         transform: translateY(-3px);
     }
@@ -1595,6 +1634,7 @@ textarea:focus {
     0% {
         transform: translateX(-100%);
     }
+
     100% {
         transform: translateX(100%);
     }
@@ -1603,7 +1643,8 @@ textarea:focus {
 /* Enhanced Message Content for Better Copy Button Positioning */
 .message-content {
     position: relative;
-    padding-right: 3rem; /* Make room for copy button */
+    padding-right: 3rem;
+    /* Make room for copy button */
 }
 
 .copy-btn {
@@ -1691,8 +1732,8 @@ body::before {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
     pointer-events: none;
     z-index: -1;
 }
