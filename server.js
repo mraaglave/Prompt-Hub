@@ -318,13 +318,29 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Start server
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`🚀 Prompt Enhancer server running on http://localhost:${PORT}`);
-    });
-}
+// Start server and self-ping in production
+app.listen(PORT, () => {
+    console.log(`🚀 Prompt Enhancer server running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
 
-// Export for Render deployment
+    // Self-pinging to prevent free instance from sleeping (production only)
+    // ⚠️ CAUTION: This may violate Render's terms of service and lead to suspension.
+    // It also consumes your free instance hours. Use at your own risk.
+    if (process.env.NODE_ENV === 'production') {
+        const PING_INTERVAL_MS = 14 * 60 * 1000; // 14 minutes
+        const APP_URL = process.env.RENDER_EXTERNAL_URL;
+
+        if (APP_URL) {
+            setInterval(() => {
+                console.log('Pinging self to prevent sleep...');
+                fetch(`${APP_URL}/health`)
+                    .then(res => console.log(`Ping successful: ${res.status}`))
+                    .catch(err => console.error(`Ping failed: ${err.message}`));
+            }, PING_INTERVAL_MS);
+        } else {
+            console.warn('⚠️ RENDER_EXTERNAL_URL not set. Self-pinging disabled.');
+        }
+    }
+});
+
+// Export for testing or serverless environments if needed
 module.exports = app;
-
