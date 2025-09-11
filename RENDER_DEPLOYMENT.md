@@ -132,5 +132,6 @@ Your deployment includes:
 ---
 
 **Happy Deploying! 🚀**
-
 Your Prompt Enhancer app will be live at: `https://your-app-name.onrender.com`
+
+You can see a live example here: https://prompt-hub-bl62.onrender.com/

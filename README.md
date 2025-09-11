@@ -1,33 +1,52 @@
-# Prompt Enhancer - AI Prompt Enhancement Tool
+<div align="center">
 
-## 🚀 Project Overview
+# ✨ Prompt Hub
 
-Prompt Enhancer is a lightweight, interactive platform designed to help users craft better AI prompts by offering advanced scenario, tone, and length options in an easy-to-use chat interface. The tool makes AI answers more relevant, faster, and audience-focused without requiring complex technical knowledge.
+### From a weekend “vibe coding” experiment to a powerful AI productivity tool!
 
-### 🌟 Version: 1.0 (With Real AI Integration)
-### 🎨 Theme: Professional Glassmorphism + Deep Black Background
-### 📱 Responsive: Yes (Mobile, Tablet, Desktop)
-### 🤖 AI Integration: Google Gemini AI API
+![License](https://img.shields.io/github/license/mraaglave/Prompt-Hub?style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/mraaglave/Prompt-Hub?style=for-the-badge)
+![Forks](https://img.shields.io/github/forks/mraaglave/Prompt-Hub?style=for-the-badge)
 
-## ✨ Key Features
+</div>
 
-| Feature | Description |
-|---------|-------------|
-| **Home Page** | Navigation bar with Home, About, Contact, social links (GitHub, LinkedIn), intro text, "Get Started" button, and info cards |
-| **Main Prompt Interface** | Chat-style display with copy button, input bar, and + popup for advanced options |
-| **Plus (+) Popup Menu** | Choose Scenario, Tone, Output Length + quick toggles (add sources, step-by-step, SEO) |
-| **Prompt Counter** | Displays total prompts created in session (stored in sessionStorage) |
-| **History Panel** | Shows recent prompts & responses for the current session |
-| **Donation Popup** | Appears after free limit (5 prompts/session) with PayPal/BuyMeACoffee links |
-| **Trending & Recommended Presets** | Quick-access buttons for popular prompt types |
-| **Responsive UI** | Works seamlessly on all device sizes |
-| **Glassmorphic Theme** | Dark mode with frosted glass effect for a premium feel |
+**[🚀 Live Demo](https://prompt-hub-bl62.onrender.com/) | [🎬 Demo Video](https://youtu.be/6TA8ygwfm8M)**
+
+Have you ever felt like your AI isn't giving you the output you really need? You know your idea is solid, but the response falls flat. That’s exactly the challenge **Prompt Enhancer** is designed to solve.
+
+It's a lightweight, interactive platform that helps you craft smarter, more effective prompts for any major AI model. By offering advanced scenario, tone, and length options in an easy-to-use chat interface, the tool makes AI answers more relevant, faster, and audience-focused without requiring complex technical knowledge. It’s not “just another chatbot”—it’s a productivity booster for developers, marketers, creators, and anyone working with AI.
+
+## ✨ Features
+
+- **🤖 Real AI Integration**: Powered by the Google Gemini API for live prompt enhancement.
+- **🎨 Advanced Prompt Controls**: Go beyond a single text box. Fine-tune your requests with options for:
+  - **Scenario**: Storytelling, Coding, Marketing, Business Plans, and more.
+  - **Tone**: Friendly, Expert, Humorous, Analytical, and others.
+  - **Length**: Short, Medium, or Long-form outputs.
+  - **Quick Toggles**: Add sources, request step-by-step instructions, or optimize for SEO.
+- **💎 Professional UI**: A sleek, responsive Glassmorphism interface with a deep black theme.
+- **📈 Session Tracking**: A prompt counter and history panel keep track of your work during a session.
+- **🚀 Performance**: Smooth loading animations and a snappy, responsive experience.
+- **📱 Fully Responsive**: A seamless experience on desktop, tablet, and mobile devices.
 
 ## 🛠️ Technical Stack
 
 - **Frontend**: HTML5, CSS3 (Glassmorphism, Flex/Grid), JavaScript (Vanilla)
 - **Storage**: sessionStorage for counter/history (reset on browser close)
 - **Icons**: Font Awesome
+- **AI**: Google Gemini API
+- **Deployment**: Dockerized, live on Render & Vercel
+
+## 🤖 Built With an AI-Powered Dev Workflow
+
+This project started as a weekend experiment and was rapidly developed into a fully functional application by leveraging a suite of AI-powered tools:
+
+- **GitHub Copilot**: For real-time code completion and suggestions.
+- **Gemini Extension for VS Code**: For brainstorming, refactoring, and generating code blocks.
+- **Warp AI**: For terminal superpowers and command generation.
+- **Cursor**: An AI-first code editor for a more integrated development experience.
+- **Phind AI**: For quick research, problem-solving, and finding optimal solutions.
+
 - **Fonts**: Google Fonts (Poppins)
 - **Payments**: PayPal.me, BuyMeACoffee, Stripe links (trial – no backend verification)
 - **Hosting**: GitHub Pages / Vercel compatible
@@ -282,6 +301,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Google Fonts for typography
 - The glassmorphism design community for inspiration
 - Open source contributors
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 📊 Browser Support
 
