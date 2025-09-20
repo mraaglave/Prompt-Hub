@@ -137,23 +137,23 @@ Example:
     // Add tone requirements
     if (options.tone) {
         const toneMappings = {
-            friendly: "The response should be warm and approachable",
-            expert: "The response should demonstrate professional expertise",
-            humorous: "The response should include humor and wit", 
-            creative: "The response should be creative and imaginative",
-            empathetic: "The response should be understanding and compassionate",
-            analytical: "The response should be detailed and logical"
+            friendly: "Modify the prompt to request a warm and approachable tone.",
+            expert: "Modify the prompt to request a tone of professional expertise.",
+            humorous: "Modify the prompt to request a tone that includes humor and wit.",
+            creative: "Modify the prompt to request a creative and imaginative tone.",
+            empathetic: "Modify the prompt to request an understanding and compassionate tone.",
+            analytical: "Modify the prompt to request a detailed and logical tone."
         };
-        instruction += `Desired tone: ${toneMappings[options.tone] || options.tone}\n`;
+        instruction += `Tone requirement: ${toneMappings[options.tone] || options.tone}\n`;
     }
     
     // Add length preference
     const lengthMappings = {
-        short: "The response should be concise and brief",
-        medium: "The response should be moderate in length", 
-        long: "The response should be comprehensive and detailed"
+        short: "Modify the prompt to request a concise and brief response.",
+        medium: "Modify the prompt to request a response of moderate length.",
+        long: "Modify the prompt to request a comprehensive and detailed response."
     };
-    instruction += `Length preference: ${lengthMappings[options.length] || 'moderate in length'}\n`;
+    instruction += `Length requirement: ${lengthMappings[options.length] || 'Modify the prompt to request a response of moderate length.'}\n`;
     
     // Add toggle options
     if (options.toggles) {
