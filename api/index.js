@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.json());
 
 // Health check
-app.get('/health', (req, res) => {
+app.get('/api/health', (req, res) => {
     res.json({ 
         status: 'OK', 
         message: 'Prompt Enhancer API is running',
@@ -32,7 +32,7 @@ app.get('/health', (req, res) => {
 });
 
 // Status endpoint for debugging
-app.get('/status', (req, res) => {
+app.get('/api/status', (req, res) => {
     res.json({
         status: 'running',
         timestamp: new Date().toISOString(),
