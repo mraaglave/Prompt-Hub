@@ -20,20 +20,6 @@ if (API_KEY) {
 app.use(cors());
 app.use(express.json());
 
-// Serve static files
-app.use(express.static(path.join(__dirname, '..')));
-
-// Debug middleware to log requests
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
-    next();
-});
-
-// Root route
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'index.html'));
-});
-
 // Health check
 app.get('/health', (req, res) => {
     res.json({ 
@@ -55,24 +41,6 @@ app.get('/status', (req, res) => {
         aiInitialized: !!genAI,
         version: '1.0.0'
     });
-});
-
-// Test route for CSS file
-app.get('/css/style.css', (req, res) => {
-    console.log('CSS file requested');
-    res.sendFile(path.join(__dirname, '..', 'css', 'style.css'));
-});
-
-// Test route for JS file
-app.get('/js/script.js', (req, res) => {
-    console.log('JS file requested');
-    res.sendFile(path.join(__dirname, '..', 'js', 'script.js'));
-});
-
-// Test route for test HTML
-app.get('/test', (req, res) => {
-    console.log('Test HTML requested');
-    res.sendFile(path.join(__dirname, '..', 'test.html'));
 });
 
 // Enhance prompt endpoint
@@ -269,11 +237,6 @@ function applyFallbackEnhancement(originalPrompt) {
 app.use((error, req, res, next) => {
     console.error('Server Error:', error);
     res.status(500).json({ error: 'Internal server error' });
-});
-
-// Catch-all route for SPA - serve index.html for any unmatched routes (must be last)
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 // Export for Vercel serverless functions
